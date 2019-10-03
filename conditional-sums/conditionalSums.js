@@ -8,30 +8,29 @@ Output:
   Number | Sum of all values in the array that match the condition.
 */
 
-const conditionalSum = function(values, condition) { // console.log(values + condition);
-  let sum = 0;
-  let test;
+const conditionalSum = function(values, condition) { // Take in array and condition
+  let sum = 0; // Create an empty numeric sum for the output
+  let test; // Create a true/false criteria based on a nested ternary of possible conditions
   condition === "even"
     ? test = true
     : condition === "odd"
       ? test = false
-      : sum = "Invalid Condition. Use 'even' or 'odd'."; // console.log(test);
-  values.forEach(function(value){ // console.log(value);
-    switch (test) {
-      case test === undefined:
-        break;
-      case test && value % 2 === 0:
-        sum += value; // console.log("even add:" + value + "\n" + "running sum:" + sum);
-        break;
-      case test === false && value % 2 !== 0:
-        sum += value; // console.log("odd add:" + value + "\n" + "running sum:" + sum);
-        break;
+      : sum = "Invalid Condition. Use 'even' or 'odd'."; // Error message for nonsense conditions
+  values.forEach(function(value){
+    if(test && value % 2 === 0) { // Check for the true false critera & divisbility by two
+        sum += value; // Add to our sum if both test criteria pass
+        // console.log("even add:" + value + "\n" + "running sum:" + sum); // Logs for debugging
+    }
+    if (!test && value % 2 !== 0) { // Check for the true false critera & non-divisbility by two
+      sum += value; // Add to our sum if both test criteria pass
+      // console.log("odd add:" + value + "\n" + "running sum:" + sum); // Logs for debugging
     }
   })
-  return "Final Sum: " + sum;
+  return sum; // Return the result
 };
 
 // Tests
+
 console.log(conditionalSum([1, 2, 3, 4, 5], "even"));
 console.log("\n");
 console.log(conditionalSum([1, 2, 3, 4, 5], "odd"));
