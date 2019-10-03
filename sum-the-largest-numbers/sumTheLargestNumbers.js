@@ -1,33 +1,25 @@
 /*
-Purpose of the lastIndexOf function:
-  To find the last instance of a given value in a given array
+11:15
+Purpose of the sumLargestNumbers function:
+  In this exercise, we will be given an array of 2 or more numbers. We will then have to find the two largest numbers in that array, and sum them together.
 Parameters:
   Array | Array to be searched
-  Number | Value to find
 Conditions:
   If the Value never occurs, return -1
 Output:
-  Number | Index of the last instance of that value
+  Number | Sum of the two largest values
 */
 
-/* Example Function
-const lastIndexOf = function (array, value) {
-  let index = ""; // Set an empty index
-  let matchedPosition = []; // Set an empty variable to store matched positions
-  for (let i = 0; i < array.length; i++) { // Iterate through index
-    if (array[i] === value) {
-      matchedPosition.push(i); // Push each matched position to the matchedPosition array
-    }
-  }
-  matchedPosition.length > 0// Make sure there are matched positions
-    ? index = matchedPosition[matchedPosition.length - 1] // If there are matched positions, grab the position with the greatest index in the matchedPosition array
-    : index = -1; // If there are no matched positions, store -1 as the index
-  return index; // Reurn the value
-}
-*/
-
-let sumLargestNumbers = function(data) {
-  // Put your solution here
+let sumLargestNumbers = function(data) { // Hand us an array
+  let sum = []; // Empty array for filling
+  sum = data.sort(); // Sort the contents of the incoming array and dump it into our sum array
+  // console.log(sum);
+  sum.splice(2,sum.length); // Reduce the sum array to the first two indexes
+  // console.log(sum);
+  sum.length === 2 // Validate that the array we have created and sliced has exactly the number of values to sum
+    ? sum = sum[0] + sum[1]
+    : sum = "Gimmie an array with at least two numbers, you doofus!"
+  return sum;
 };
 
 console.log(sumLargestNumbers([1, 10]));
