@@ -18,7 +18,7 @@ const instructorWithLongestName = function (instructors) {
   longest.length > 0 // Let's make sure we have at least one object ot display
     ? longest = longest[0] // The first object in the array should be the one with the longest name value. Set our longest output to just that value
     : longest = "Gimmie an array with at least one object, you doofus"; // Error message in case the sum array has no values
-  return longest;
+  return longest; // Return our output
 };
 
 console.log(instructorWithLongestName([
