@@ -14,7 +14,7 @@ const numberOfVowels = function (inputString) { // Take in your string
   // console.log(inputString.length); // Log initial input lenght for debugging
   let sum = 0; // Assume no vowels to begin
   for (i = 0; i < inputString.length; i++) { // Loop through the string
-    switch (inputString[i]) { // Compare string indexes based on the loop
+    switch (inputString[i].toLowerCase()) { // Compare lower-case strings
       case "a": 
         sum++; // Iterate sum up when you find a vowel // console.log("plus one for a, current count: " + sum); // Log each iteration and the updated sum for debugging
         break;
