@@ -10,45 +10,27 @@ Output:
   String | Repeated numbers
 */
 
-const repeatNumbers = function(data) {
-  let repeated = [];
-  repeated += data;
-  return repeated;
+const simpleRepeat = function (value, count) {      // Take in a tuple
+  let repeated = "";                                // Set an empty output string
+  for (i = 0; i < count; i++) {                     // Iterate over the tuple a number of times equal to the second element of the tuple
+    repeated += value;                              // Each iteration, append the first element of the tuple as a string to our output
+  }
+  return repeated;                                  // Spit out the result
+};
+
+const repeatNumbers = function (data) {             // Take in our array of tuples
+  let output = "";                                  // Set an empty output string
+  for (let i = 0; i < data.length; i++) {           // Iterate over the incoming array of tuples
+    output += simpleRepeat(data[i][0], data[i][1]); // Each iteration, the simpleRepeat function on each tuple and return the result appended as a string to output
+    if (i < data.length - 1) {                      // If it's not the last tuple...
+      output += ", ";                               // ... add a comma and a space before moving to the next tuple
+    }
+  }
+  return output;                                    // Spit out the result
 };
 
 // Tests
+console.log(simpleRepeat(1, 10));
 console.log(repeatNumbers([[1, 10]]));
 console.log(repeatNumbers([[1, 2], [2, 3]]));
-console.log(repeatNumbers([[10, 4], [34, 6], [92, 2]]));
-
-/*
-const spaceShift = function (array) {       // A simple function to Shift all successive leading encoded spaces
-  if (array[0] === "%20") {                 // If the first element of an array is an encoded space...
-    array.shift();                          // shift it out
-    spaceShift(array);                      // then do it again, over and over until it isn't
-  }
-}
-
-const spacePop = function (array) {         // A simple funciton to Pop all successive trailing encoded spaces
-  if (array[array.length - 1] === "%20") {  // if the last element of an array is an encoded space... 
-    array.pop();                            // pop it out
-    spacePop(array);                        // then do it again, over and over until it isn't
-  }
-}
-
-const urlEncode = function (text) {         // Input text received
-  let encoded = [];                         // Empty array for individul characters
-  for (i = 0; i < text.length; i++) {       // Iterate over each letter
-    if (text[i] === " ") {                  // If it's a space...
-      encoded.push("%20");                  // transform it to "%20" and push it into our empty array
-    }
-    else {
-      encoded.push(text[i]);                // Otherwise push the letter to the array
-    }
-  }
-  spaceShift(encoded);                      // Remove all successive leading encoded spaces by calling my simple function
-  spacePop(encoded);                        // Remove all successive leading encoded spaces by calling my other simple function
-  return String(encoded.join(""));          // Return the array as a joined string
-};
-*/
-
+console.log(repeatNumbers([[10, 4], [34, 6], [92, 2], [8, 6]]));
