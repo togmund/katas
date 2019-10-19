@@ -7,13 +7,22 @@ Output:
   String | output in camelCase
 */
 
+
 const camelCase = function(input) {
   let output = "";
-  output += input;
+  for (let i = 0; i < input.length; i++) {
+    if (input[i - 1] === " ") {
+      output += input[i].toUpperCase();
+    }
+    if (input[i - 1] !== " " && input[i] !== " ") {
+      output += input[i];
+    }
+  }
   return output;
-}
+};
+
 
 // Tests
 console.log(camelCase("this is a string"));
 console.log(camelCase("loopy lighthouse"));
-console.log(camelCase("supercalifragalisticexpialidocious"));
+console.log(camelCase("super cali fragalistic expi ali docious"));

@@ -10,7 +10,7 @@ Output:
   String | Repeated numbers
 */
 
-const simpleRepeat = function (value, count) {      // Take in a tuple
+const simpleRepeat = function(value, count) {      // Take in a tuple
   let repeated = "";                                // Set an empty output string
   for (i = 0; i < count; i++) {                     // Iterate over the tuple a number of times equal to the second element of the tuple
     repeated += value;                              // Each iteration, append the first element of the tuple as a string to our output
@@ -18,7 +18,7 @@ const simpleRepeat = function (value, count) {      // Take in a tuple
   return repeated;                                  // Spit out the result
 };
 
-const repeatNumbers = function (data) {             // Take in our array of tuples
+const repeatNumbers = function(data) {             // Take in our array of tuples
   let output = "";                                  // Set an empty output string
   for (let i = 0; i < data.length; i++) {           // Iterate over the incoming array of tuples
     output += simpleRepeat(data[i][0], data[i][1]); // Each iteration, the simpleRepeat function on each tuple and return the result appended as a string to output
@@ -29,8 +29,19 @@ const repeatNumbers = function (data) {             // Take in our array of tupl
   return output;                                    // Spit out the result
 };
 
+
 // Tests
-console.log(simpleRepeat(1, 10));
-console.log(repeatNumbers([[1, 10]]));
-console.log(repeatNumbers([[1, 2], [2, 3]]));
-console.log(repeatNumbers([[10, 4], [34, 6], [92, 2], [8, 6]]));
+// console.log(simpleRepeat(1, 10));
+// console.log(repeatNumbers([[1, 10]]));
+// console.log(repeatNumbers([[1, 2], [2, 3]]));
+// console.log(repeatNumbers([[10, 4], [34, 6], [92, 2], [8, 6]]));
+
+const sampleArray = [[10, 4], [34, 6], [92, 2], [8, 6]];
+
+const mutatedArray = sampleArray.map((e) => {
+  let output = "";
+  for (i = 0; i < e[1]; i++) output += e[0];
+  return output;
+}).join(", ");
+
+console.log(mutatedArray);
